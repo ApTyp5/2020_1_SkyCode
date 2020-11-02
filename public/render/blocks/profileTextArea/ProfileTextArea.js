@@ -7,7 +7,7 @@ import ErrorBlock from '../errorBlock/ErrorBlock.js';
 import template from './ProfileTextArea.hbs';
 import CheckedInput from '../../elements/checkedInput/CheckedInput';
 import Events from '../../../services/Events/Events';
-import {validFileType} from '../../elements/ImageInput/ImageInput';
+import {validateFileSize, validFileType} from '../../elements/ImageInput/ImageInput';
 
 export default class ProfileTextArea extends Component {
     constructor({classes, data}) {
@@ -131,6 +131,12 @@ export default class ProfileTextArea extends Component {
                 this.context
                     .avatarErrorField
                     .replaceMessage('Допустимые форматы: .jpg, .jpeg, .png, .svg');
+                return;
+            }
+            if (!validateFileSize(img)) {
+                this.context
+                    .avatarErrorField
+                    .replaceMessage('Максимальный размер файла - 1МБ');
                 return;
             }
             const formData = new FormData();

@@ -19,6 +19,11 @@ export function validFileType(file) {
     return false;
 }
 
+export function validateFileSize(file) {
+    const mb = 1024 * 1024;
+    return file.size <= mb;
+}
+
 export default class ImageInput extends Component {
     constructor({
         id,
@@ -41,6 +46,7 @@ export default class ImageInput extends Component {
             + ' обязательно';
         if (!validFileType(this.domElement.files[0])) return 'Выберите изображение (.png,'
             + ' .jpg)';
+        if (!validateFileSize(this.domElement.files[0])) return 'Максимальный размер файла - 1МБ';
         return '';
     }
 

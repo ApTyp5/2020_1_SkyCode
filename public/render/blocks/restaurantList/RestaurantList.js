@@ -30,13 +30,13 @@ export default class RestaurantList extends Component {
     }
 
 
-    filterRestCategories(restArr, catId) {
+    static filterRestCategories(restArr, catId) {
         if (catId === '-1') return restArr;
         return restArr.filter((rest) => rest.tagsIds.includes(catId));
     }
 
     static formRestComponents(restArr, catId = '-1') {
-        const filteredRestArr = this.filterRestCategories(restArr, catId);
+        const filteredRestArr = RestaurantList.filterRestCategories(restArr, catId);
 
         const restaurantComponents = [];
         for (const restaurant of filteredRestArr) {

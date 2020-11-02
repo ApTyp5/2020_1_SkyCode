@@ -4,7 +4,7 @@ import Component from '../../Component';
 
 const fileTypes = [
     'image/jpeg',
-    'image/jpeg',
+    'image/jpg',
     'image/png',
     'image/svg',
 ];

@@ -13,6 +13,7 @@ export default class SupportChat extends Component {
                 type: 'text',
                 placeholder: 'Сообщение',
                 classes: 'message_input',
+                maxlength: 255,
             }),
         });
 

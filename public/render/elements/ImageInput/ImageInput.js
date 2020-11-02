@@ -2,14 +2,14 @@ import temp from './ImageInput.hbs';
 import Component from '../../Component';
 
 
-const fileTypes = [
+export const fileTypes = [
     'image/jpeg',
-    'image/jpeg',
+    'image/jpg',
     'image/png',
     'image/svg',
 ];
 
-function validFileType(file) {
+export function validFileType(file) {
     for (let i = 0; i < fileTypes.length; i++) {
         if (file.type === fileTypes[i]) {
             return true;

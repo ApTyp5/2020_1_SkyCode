@@ -1,13 +1,13 @@
-all: build stylecow webpack
+all: build runServer
 
-build:
+build: stylecow webpack
 	cd ./public/handlebars; ./precompile.sh
 
 runServer:
-	cd server; go run server.go &
+	cd server; go run front_server.go &
 
 stopServer:
-	pkill server
+	pkill front_server
 
 main:
 	google-chrome http://127.0.0.1:8080
@@ -17,3 +17,5 @@ stylecow:
 
 webpack:
 	webpack
+
+reload: stopServer all

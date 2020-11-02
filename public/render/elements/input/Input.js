@@ -19,8 +19,10 @@ export default class Input extends Component {
         isDisabled,
         isChecked,
         isReadonly,
+        accept,
     }) {
         super(classes, {
+            accept,
             src,
             type,
             placeholder,
@@ -85,6 +87,10 @@ export default class Input extends Component {
             errors.push(`Максимальная длина: ${inputElement.maxLength}`);
         }
 
+        if (inputElement.length === inputElement.maxLength) {
+            errors.push('Достигнута максимальная длина');
+        }
+
         if (validity.tooShort) {
             errors.push(`Минимальная длина: ${inputElement.minLength}`);
         }
@@ -95,10 +101,6 @@ export default class Input extends Component {
 
         if (validity.rangeOverflow) {
             errors.push(`Максимальное значение: ${inputElement.max}`);
-        }
-
-        if (validity.stepMismatch) {
-            errors.push(`Знчечение должно иметь шаг ${inputElement.step}`);
         }
 
         if (validity.badInput) {

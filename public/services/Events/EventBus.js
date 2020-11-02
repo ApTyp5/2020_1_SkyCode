@@ -47,7 +47,7 @@ class EventBus {
     broadcast(event, data) {
         let shift = '';
         for (let i = 0; i < tab; i++) shift += '    ';
-        console.log(shift, event, data);
+        console.log('event: ', shift, event, data);
         tab += 1;
 
         if (event === 'product-card__add-button-Биг тейсти9-clicked') {}

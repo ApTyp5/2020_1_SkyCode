@@ -56,7 +56,7 @@ export default class MainView extends Component {
             }),
             restaurantList: new RestaurantList({
                 classes: 'main-view__restaurant-list',
-                restaurantArr: restaurantArr.slice(page * count, (page + 1) * count),
+                restaurantArr: restaurantArr.slice((page - 1) * count, page * count),
                 catId,
             }),
         });

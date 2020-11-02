@@ -22,6 +22,7 @@ export default class MainView extends Component {
         console.log('last', last);
         console.log('filt rests', RestaurantList.filterRestCategories(restaurantArr, catId));
         console.log('rest arr', restaurantArr);
+        console.log(total, 'total');
 
         sessionStorage.message = '';
 

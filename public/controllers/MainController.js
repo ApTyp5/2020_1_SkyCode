@@ -8,7 +8,6 @@ import BasketController from './BasketController.js';
 import EventBus from '../services/Events/EventBus';
 import Event from '../services/Events/Events';
 import TagModel from '../models/TagModel';
-import Events from '../services/Events/Events';
 
 class MainController extends BaseController {
     constructor(title = 'main page') {
@@ -18,14 +17,13 @@ class MainController extends BaseController {
 
     execute(matchData = []) {
         const count = 6;
-        const reqCount = 1550;
         const page = matchData.length === 0 ? 1 : matchData[0];
 
         Promise.all([
             RestaurantModel
                 .getRecommendationsByAddress(1, 4, localStorage.getItem('deliveryGeo')),
             RestaurantModel
-                .getRestaurantsByAddress(page, reqCount, localStorage.getItem('deliveryGeo'), sessionStorage.getItem(Events.restCategorySelected)),
+                .getRestaurantsByAddress(page, count, localStorage.getItem('deliveryGeo'), sessionStorage.getItem(Event.restCategorySelected)),
             TagModel.all(),
         ])
             .then(([recomResponse, restResponse, tagsResponse]) => {

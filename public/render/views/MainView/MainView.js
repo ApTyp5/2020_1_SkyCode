@@ -14,7 +14,8 @@ export default class MainView extends Component {
         this.template = temp;
         const message = sessionStorage.message;
         const catId = sessionStorage.getItem(Events.restCategorySelected) || '-1';
-        const restTotal = RestaurantList.filterRestCategories(restaurantArr, catId).length;
+        restaurantArr = RestaurantList.filterRestCategories(restaurantArr, catId);
+        const restTotal = restaurantArr.length;
         const last = Math.floor(Number(restTotal) / Number(count))
             + (Number(restTotal) % Number(count) !== 0);
         console.log('catId', catId);
@@ -52,7 +53,7 @@ export default class MainView extends Component {
             }),
             restaurantList: new RestaurantList({
                 classes: 'main-view__restaurant-list',
-                restaurantArr,
+                restaurantArr: restaurantArr.slice(page * count, (page + 1) * count),
                 catId,
             }),
         });

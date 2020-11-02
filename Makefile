@@ -1,6 +1,6 @@
-all: build stylecow webpack
+all: build runServer
 
-build:
+build: stylecow webpack
 	cd ./public/handlebars; ./precompile.sh
 
 runServer:

@@ -4,12 +4,13 @@ export default class CostInput extends Input {
     constructor({
         id,
         classes,
-        max,
+        max = 50000,
         isRequired,
         placeholder,
     }) {
         super({
-            type: 'text',
+            type: 'number',
+            min: 0.1,
             id,
             classes,
             max,

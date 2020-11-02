@@ -49,7 +49,9 @@ export default class GeoPopup extends Component {
             sessionStorage.getItem('longitude'),
         );
         EventBus.broadcast(Events.successGeo);
-        if (!isNewGeo) {
+        if (isNewGeo) {
+            Router.reload();
+        } else {
             Router.reload('Адрес доставки успешно изменён');
         }
     }

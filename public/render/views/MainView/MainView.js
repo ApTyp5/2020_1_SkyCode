@@ -6,6 +6,7 @@ import RestaurantList from '../../blocks/restaurantList/RestaurantList';
 import Component from '../../Component';
 import RecommendBar from '../../blocks/RecommendBar/RecommendBar';
 import Pagination from '../../blocks/Pagination/Pagination';
+import Events from '../../../services/Events/Events';
 
 export default class MainView extends Component {
     constructor({actionArr, categoryArr, recommendArr, restaurantArr, page, count, total}) {
@@ -42,6 +43,7 @@ export default class MainView extends Component {
             restaurantList: new RestaurantList({
                 classes: 'main-view__restaurant-list',
                 restaurantArr,
+                catId: sessionStorage.getItem(Events.restCategorySelected),
             }),
         });
         if (recommendArr && recommendArr.length > 0) {

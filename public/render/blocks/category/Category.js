@@ -14,6 +14,7 @@ export default class Category extends Component {
 
     bind() {
         this.domElement.onclick = () => {
+            sessionStorage.setItem(Events.restCategorySelected, this.catId);
             EventBus.broadcast(
                 Events.restCategorySelected,
                 this.catId,

@@ -43,6 +43,7 @@ export default class OrderCheckout extends Component {
                     value: email,
                     pattern: '^([A-Za-z0-9_\\-\\.])+@([A-Za-z0-9_\\-\\.])+\\.([A-Za-z]{2,4})$',
                     placeholder: 'email@example.com',
+                    maxlength: 256,
                 }),
             }),
             CommentInput: new CheckedInput({
@@ -50,7 +51,7 @@ export default class OrderCheckout extends Component {
                 Input: new Input({
                     id: 'order-checkout__comment-input',
                     type: 'text',
-                    maxlength: 255,
+                    maxlength: 256,
                     placeholder: 'пожелания',
 
                 }),

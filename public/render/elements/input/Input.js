@@ -14,7 +14,7 @@ export default class Input extends Component {
         value,
         isRequired,
         pattern,
-        maxlength,
+        maxlength = 256,
         minlength,
         isDisabled,
         isChecked,

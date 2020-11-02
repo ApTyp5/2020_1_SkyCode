@@ -25,6 +25,7 @@ export default class AddProductView extends Component {
                     type: 'text',
                     placeholder: 'продукта',
                     minlength: 4,
+                    maxlength: 80,
                     isRequired: true,
                 }),
             }),

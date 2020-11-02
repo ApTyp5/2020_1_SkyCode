@@ -21,6 +21,7 @@ export default class AddRestaurant extends Component {
                     type: 'text',
                     // placeholder: 'ресторана',
                     minlength: 4,
+                    maxlength: 30,
                     isRequired: true,
                 }),
             }),

@@ -47,7 +47,6 @@ export default class CategoryBar extends Component {
             }));
         }
 
-        this.activateCategory(sessionStorage.getItem(Events.restCategorySelected));
         this.addContextData({categories}, true);
     }
 
@@ -68,6 +67,8 @@ export default class CategoryBar extends Component {
     }
 
     bind() {
+        this.activateCategory(sessionStorage.getItem(Events.restCategorySelected));
+
         this.unbind(
             EventBus.subscribe(Events.restCategorySelected, this.activateCategory.bind(this)),
         );

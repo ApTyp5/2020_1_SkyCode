@@ -17,13 +17,14 @@ class MainController extends BaseController {
 
     execute(matchData = []) {
         const count = 6;
+        const reqCount = 1550;
         const page = matchData.length === 0 ? 1 : matchData[0];
 
         Promise.all([
             RestaurantModel
                 .getRecommendationsByAddress(1, 4, localStorage.getItem('deliveryGeo')),
             RestaurantModel
-                .getRestaurantsByAddress(page, count, localStorage.getItem('deliveryGeo')),
+                .getRestaurantsByAddress(page, reqCount, localStorage.getItem('deliveryGeo')),
             TagModel.all(),
         ])
             .then(([recomResponse, restResponse, tagsResponse]) => {

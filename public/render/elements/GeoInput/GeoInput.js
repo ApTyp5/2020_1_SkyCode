@@ -49,10 +49,6 @@ export default class GeoInput extends Component {
         const address = document.getElementById(this.id).innerText
             .replace(/\s+/g, ' ').trim();
 
-        if (address.length === 0) {
-            return 'Обязательное поле';
-        }
-
         MapModel
             .getCoordinates(address)
             .then((response) => {
@@ -64,11 +60,20 @@ export default class GeoInput extends Component {
                     this._isValid = true;
                     EventBus.broadcast(Events.geoConfirmationRequest);
                 } else {
+                    this._isValid = false;
                     EventBus.broadcast(Events.stopGeoConfirmation);
                     document.getElementById(this.contextParent.errFieldId())
                         .innerText = 'с точностью до дома';
                 }
             });
+
+        if (address.length === 0) {
+            return 'Обязательное поле';
+        }
+
+        if (!this._isValid) {
+            return 'с точностью до дома';
+        }
 
         return '';
     }

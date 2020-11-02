@@ -29,6 +29,8 @@ export default class GeoPopup extends Component {
 
     submit() {
         if (this.domElement.style.display === 'none') return;
+        console.log('is valid: ', this.context.Input.isValid());
+        if (!this.context.Input.isValid()) return;
 
         let isNewGeo = false;
         if (localStorage.getItem('deliveryGeo') === null) {

@@ -31,6 +31,10 @@ export default class CheckedInput extends Component {
             }, 300);
         };
 
+        this.context.Input.domElement.onfocusout = () => {
+            this.errFieldElement().innerText = this.context.Input.check();
+        };
+
         this.context.Input.domElement.onblur = () => {
             this.errFieldElement().innerText = this.context.Input.check();
         };

@@ -32,6 +32,7 @@ export default class OrderCheckout extends Component {
                     value: localStorage.getItem('deliveryGeo'),
                     placeholder: 'Введите адрес доставки',
                     isRequired: true,
+                    isDisabled: true,
                 }),
             }),
             EmailInput: new CheckedInput({

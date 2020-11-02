@@ -28,7 +28,7 @@ export default class CheckedInput extends Component {
             clearTimeout(this.timeoutId);
             this.timeoutId = setTimeout(() => {
                 this.errFieldElement().innerText = this.context.Input.check();
-            }, 50);
+            }, 300);
         };
 
         this.context.Input.domElement.onblur = () => {

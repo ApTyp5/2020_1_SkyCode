@@ -20,6 +20,9 @@ export default class CostInput extends Input {
     }
 
     check() {
+        const errors = super.check();
+        if (errors !== '') return errors;
+
         if (super.context.isRequired && this.domElement.value === '') return 'Обязательное поле';
         if (!isFinite(parseFloat(this.domElement.value))) return 'Ожидается'
             + ' вещественное число';

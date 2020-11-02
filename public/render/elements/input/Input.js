@@ -19,8 +19,10 @@ export default class Input extends Component {
         isDisabled,
         isChecked,
         isReadonly,
+        accept,
     }) {
         super(classes, {
+            accept,
             src,
             type,
             placeholder,

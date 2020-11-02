@@ -7,6 +7,7 @@ import ErrorBlock from '../errorBlock/ErrorBlock.js';
 import template from './ProfileTextArea.hbs';
 import CheckedInput from '../../elements/checkedInput/CheckedInput';
 import Events from '../../../services/Events/Events';
+import {validFileType} from '../../elements/ImageInput/ImageInput';
 
 export default class ProfileTextArea extends Component {
     constructor({classes, data}) {
@@ -71,6 +72,7 @@ export default class ProfileTextArea extends Component {
                 type: 'file',
                 value: 'xxx',
                 image: true,
+                accept: 'image/*',
             }),
             generalErrorField: new ErrorBlock({
                 id: 'profile-general-error',
@@ -124,6 +126,12 @@ export default class ProfileTextArea extends Component {
 
         this.context.AvatarInput.domElement.addEventListener('change', () => {
             const img = this.context.AvatarInput.domElement.files[0];
+            if (!validFileType(img)) {
+                this.context
+                    .avatarErrorField
+                    .replaceMessage('Допустимые форматы: .jpg, .jpeg, .png, .svg');
+                return;
+            }
             const formData = new FormData();
             formData.append('avatar', img);
             this.context.avatarErrorField.clean();

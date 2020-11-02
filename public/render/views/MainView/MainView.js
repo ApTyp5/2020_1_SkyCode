@@ -26,6 +26,7 @@ export default class MainView extends Component {
         console.log(total, 'total');
         console.log(page, 'page');
         console.log(count, 'count');
+        console.log('shown rests:', restaurantArr.slice(page * count, (page + 1) * count));
 
         sessionStorage.message = '';
 

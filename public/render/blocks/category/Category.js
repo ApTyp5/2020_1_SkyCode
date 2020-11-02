@@ -21,7 +21,7 @@ export default class Category extends Component {
             // );
             EventBus.broadcast(
                 Events.setPage,
-                '/restaurant_list/1',
+                {url: '/restaurant_list/1'},
             );
         };
         super.bind();

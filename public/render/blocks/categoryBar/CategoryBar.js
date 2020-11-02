@@ -47,6 +47,7 @@ export default class CategoryBar extends Component {
             }));
         }
 
+        this.activateCategory(sessionStorage.getItem(Events.restCategorySelected));
         this.addContextData({categories}, true);
     }
 
@@ -68,15 +69,17 @@ export default class CategoryBar extends Component {
 
     bind() {
         this.unbind(
-            EventBus.subscribe(Events.restCategorySelected, (catId) => {
-                this.context.categories.forEach((cat) => {
-                    cat.domElement.className = 'category-bar__category';
-                });
-                document.getElementById(Category.categoryId(catId))
-                    .className = 'category-bar__category'
-                    + ' category-bar__active';
-            }),
+            EventBus.subscribe(Events.restCategorySelected, this.activateCategory.bind(this)),
         );
         super.bind();
+    }
+
+    activateCategory(catId = '-1') {
+        this.context.categories.forEach((cat) => {
+            cat.domElement.className = 'category-bar__category';
+        });
+        document.getElementById(Category.categoryId(catId))
+            .className = 'category-bar__category'
+            + ' category-bar__active';
     }
 }

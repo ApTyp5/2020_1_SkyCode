@@ -18,4 +18,10 @@ stylecow:
 webpack:
 	webpack
 
-reload: stopServer all
+restart: stopServer all
+
+pull:
+	git pull
+
+reload: pull restart
+

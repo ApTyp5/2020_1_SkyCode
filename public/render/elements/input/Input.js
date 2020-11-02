@@ -87,6 +87,10 @@ export default class Input extends Component {
             errors.push(`Максимальная длина: ${inputElement.maxLength}`);
         }
 
+        if (inputElement.length === inputElement.maxLength) {
+            errors.push('Достигнута максимальная длина');
+        }
+
         if (validity.tooShort) {
             errors.push(`Минимальная длина: ${inputElement.minLength}`);
         }

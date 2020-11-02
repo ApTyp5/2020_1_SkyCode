@@ -29,6 +29,7 @@ export default class ProfileTextArea extends Component {
                     placeholder: 'Михаил',
                     isRequired: true,
                     minlength: 4,
+                    maxlength: 10,
                 }),
             }),
 

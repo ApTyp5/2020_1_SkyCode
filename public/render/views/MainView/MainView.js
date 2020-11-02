@@ -13,7 +13,15 @@ export default class MainView extends Component {
         super();
         this.template = temp;
         const message = sessionStorage.message;
-        const catId = sessionStorage.getItem(Events.restCategorySelected);
+        const catId = sessionStorage.getItem(Events.restCategorySelected) || '-1';
+        const restTotal = RestaurantList.filterRestCategories(restaurantArr, catId).length;
+        const last = Math.floor(Number(restTotal) / Number(count))
+            + (Number(restTotal) % Number(count) !== 0);
+        console.log('catId', catId);
+        console.log(restTotal, 'restTotal');
+        console.log('last', last);
+        console.log('filt rests', RestaurantList.filterRestCategories(restaurantArr, catId));
+
         sessionStorage.message = '';
 
         this.addContextData({
@@ -21,8 +29,7 @@ export default class MainView extends Component {
                 classes: '',
                 first: 1,
                 current: Number(page),
-                last: Math.floor(Number(total) / Number(count))
-                    + (Number(total) % Number(count) !== 0),
+                last,
                 hrefBase: '/restaurant_list/',
             }),
             message,

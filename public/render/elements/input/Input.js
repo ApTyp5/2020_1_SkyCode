@@ -103,10 +103,6 @@ export default class Input extends Component {
             errors.push(`Максимальное значение: ${inputElement.max}`);
         }
 
-        if (validity.stepMismatch) {
-            errors.push(`Знчечение должно иметь шаг ${inputElement.step}`);
-        }
-
         if (validity.badInput) {
             errors.push('Ввод не может правильно распознаться браузером');
         }

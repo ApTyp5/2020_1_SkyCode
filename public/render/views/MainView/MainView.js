@@ -6,28 +6,12 @@ import RestaurantList from '../../blocks/restaurantList/RestaurantList';
 import Component from '../../Component';
 import RecommendBar from '../../blocks/RecommendBar/RecommendBar';
 import Pagination from '../../blocks/Pagination/Pagination';
-import Events from '../../../services/Events/Events';
 
 export default class MainView extends Component {
     constructor({actionArr, categoryArr, recommendArr, restaurantArr, page, count, total}) {
         super();
         this.template = temp;
         const message = sessionStorage.message;
-        const catId = sessionStorage.getItem(Events.restCategorySelected) || '-1';
-        restaurantArr = RestaurantList.filterRestCategories(restaurantArr, catId);
-        const restTotal = restaurantArr.length;
-        const last = Math.floor(Number(restTotal) / Number(count))
-            + (Number(restTotal) % Number(count) !== 0);
-        console.log('catId', catId);
-        console.log(restTotal, 'restTotal');
-        console.log('last', last);
-        console.log('filt rests', RestaurantList.filterRestCategories(restaurantArr, catId));
-        console.log('rest arr', restaurantArr);
-        console.log(total, 'total');
-        console.log(page, 'page');
-        console.log(count, 'count');
-        console.log('shown rests:', restaurantArr.slice((page - 1) * count, page * count));
-
         sessionStorage.message = '';
 
         this.addContextData({
@@ -35,7 +19,8 @@ export default class MainView extends Component {
                 classes: '',
                 first: 1,
                 current: Number(page),
-                last,
+                last: Math.floor(Number(total) / Number(count))
+                + (Number(total) % Number(count) !== 0),
                 hrefBase: '/restaurant_list/',
             }),
             message,
@@ -56,8 +41,7 @@ export default class MainView extends Component {
             }),
             restaurantList: new RestaurantList({
                 classes: 'main-view__restaurant-list',
-                restaurantArr: restaurantArr.slice((page - 1) * count, page * count),
-                catId,
+                restaurantArr,
             }),
         });
         if (recommendArr && recommendArr.length > 0) {

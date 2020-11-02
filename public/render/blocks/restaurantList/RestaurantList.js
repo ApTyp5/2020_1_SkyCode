@@ -5,11 +5,11 @@ import EventBus from '../../../services/Events/EventBus';
 import Events from '../../../services/Events/Events';
 
 export default class RestaurantList extends Component {
-    constructor({classes, restaurantArr, catId = '-1'}) {
+    constructor({classes, restaurantArr}) {
         super(classes);
         super.template = template;
         this.addContextData({
-            restaurantComponents: RestaurantList.formRestComponents(restaurantArr, catId),
+            restaurantComponents: restaurantArr,
         });
         this.restArr = restaurantArr;
         this.id = 'restaurant-list';

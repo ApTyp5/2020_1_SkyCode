@@ -8,6 +8,7 @@ import BasketController from './BasketController.js';
 import EventBus from '../services/Events/EventBus';
 import Event from '../services/Events/Events';
 import TagModel from '../models/TagModel';
+import Events from '../services/Events/Events';
 
 class MainController extends BaseController {
     constructor(title = 'main page') {
@@ -24,7 +25,7 @@ class MainController extends BaseController {
             RestaurantModel
                 .getRecommendationsByAddress(1, 4, localStorage.getItem('deliveryGeo')),
             RestaurantModel
-                .getRestaurantsByAddress(page, reqCount, localStorage.getItem('deliveryGeo')),
+                .getRestaurantsByAddress(page, reqCount, localStorage.getItem('deliveryGeo'), sessionStorage.getItem(Events.restCategorySelected)),
             TagModel.all(),
         ])
             .then(([recomResponse, restResponse, tagsResponse]) => {

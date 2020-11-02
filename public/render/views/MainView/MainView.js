@@ -15,7 +15,7 @@ export default class MainView extends Component {
         const message = sessionStorage.message;
         const catId = sessionStorage.getItem(Events.restCategorySelected);
         console.log(total, 'total');
-        const restNum = RestaurantList.formRestComponents(restaurantArr, catId).length;
+        const restNum = RestaurantList.filterRestCategories(restaurantArr, catId).length;
         console.log(restNum, 'restNum');
         sessionStorage.message = '';
 

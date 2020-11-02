@@ -30,7 +30,7 @@ export default class RestaurantList extends Component {
     }
 
 
-    static filterRestCategories(restArr, catId) {
+    static filterRestCategories(restArr, catId = '-1') {
         if (catId === '-1') return restArr;
         return restArr.filter((rest) => rest.tagsIds.includes(catId));
     }

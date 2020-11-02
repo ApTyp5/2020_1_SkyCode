@@ -13,6 +13,8 @@ export default class MainView extends Component {
         super();
         this.template = temp;
         const message = sessionStorage.message;
+        const catId = sessionStorage.getItem(Events.restCategorySelected);
+        const restNum = RestaurantList.formRestComponents(restaurantArr, catId);
         sessionStorage.message = '';
 
         this.addContextData({
@@ -20,8 +22,8 @@ export default class MainView extends Component {
                 classes: '',
                 first: 1,
                 current: Number(page),
-                last: Math.floor(Number(total) / Number(count))
-                    + (Number(total) % Number(count) !== 0),
+                last: Math.floor(Number(restNum) / Number(count))
+                    + (Number(restNum) % Number(count) !== 0),
                 hrefBase: '/restaurant_list/',
             }),
             message,
@@ -43,7 +45,7 @@ export default class MainView extends Component {
             restaurantList: new RestaurantList({
                 classes: 'main-view__restaurant-list',
                 restaurantArr,
-                catId: sessionStorage.getItem(Events.restCategorySelected),
+                catId,
             }),
         });
         if (recommendArr && recommendArr.length > 0) {

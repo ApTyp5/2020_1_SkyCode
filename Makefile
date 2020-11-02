@@ -17,3 +17,5 @@ stylecow:
 
 webpack:
 	webpack
+
+reload: stopServer all

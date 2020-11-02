@@ -29,7 +29,7 @@ export default class ProfileTextArea extends Component {
                     placeholder: 'Михаил',
                     isRequired: true,
                     minlength: 4,
-                    maxlength: 10,
+                    maxlength: 20,
                 }),
             }),
 
@@ -43,6 +43,7 @@ export default class ProfileTextArea extends Component {
                     placeholder: 'Волынов',
                     isRequired: true,
                     minlength: 4,
+                    maxlength: 20,
                 }),
             }),
 
@@ -56,6 +57,7 @@ export default class ProfileTextArea extends Component {
                     // eslint-disable-next-line max-len
                     pattern: '^([A-Za-z0-9_\\-\\.])+@([A-Za-z0-9_\\-\\.])+\\.([A-Za-z]{2,4})$',
                     placeholder: 'email@example.com',
+                    maxlength: 30,
                 }),
             }),
 

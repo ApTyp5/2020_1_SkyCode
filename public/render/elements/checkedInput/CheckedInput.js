@@ -31,10 +31,6 @@ export default class CheckedInput extends Component {
             }, 300);
         };
 
-        this.context.Input.domElement.onfocusout = () => {
-            this.errFieldElement().innerText = this.context.Input.check();
-        };
-
         this.context.Input.domElement.onblur = () => {
             this.errFieldElement().innerText = this.context.Input.check();
         };
@@ -47,6 +43,7 @@ export default class CheckedInput extends Component {
 
     isValid() {
         const check = this.context.Input.check();
+        console.log(check);
         this.errFieldElement().innerHTML = check;
         return check === '';
     }

@@ -15,6 +15,7 @@ export default class GeoInput extends Component {
         this.id = GeoInput.id(idSuffix);
         this._isValid = false;
         this.last = 0;
+        this.active_req = false;
     }
 
     correct() {
@@ -48,7 +49,8 @@ export default class GeoInput extends Component {
     check() {
         const address = document.getElementById(this.id).innerText
             .replace(/\s+/g, ' ').trim();
-
+        
+        this.active_req = true;
         MapModel
             .getCoordinates(address)
             .then((response) => {
@@ -59,23 +61,26 @@ export default class GeoInput extends Component {
                     sessionStorage.setItem('longitude', this.geopos.longitude);
                     this._isValid = true;
                     EventBus.broadcast(Events.geoConfirmationRequest);
+                    document.getElementById(this.contextParent.errFieldId())
+                        .innerText = '';
                 } else {
                     this._isValid = false;
                     EventBus.broadcast(Events.stopGeoConfirmation);
                     document.getElementById(this.contextParent.errFieldId())
                         .innerText = 'с точностью до дома';
                 }
+                this.active_req = false;
             });
-
+        
         if (address.length === 0) {
             return 'Обязательное поле';
         }
 
-        if (!this._isValid) {
-            return 'с точностью до дома';
+        if (this._isValid) {
+            return '';
         }
 
-        return '';
+        return '...';
     }
 
     static id(suffix) {

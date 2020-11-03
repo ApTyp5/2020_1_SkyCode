@@ -43,7 +43,6 @@ export default class CheckedInput extends Component {
 
     isValid() {
         const check = this.context.Input.check();
-        console.log(check);
         this.errFieldElement().innerHTML = check;
         return check === '';
     }

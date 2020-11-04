@@ -30,34 +30,16 @@ class MainController extends BaseController {
                 if (recomResponse.error) recomResponse.restaurants = [];
                 if (restResponse.error) throw 'restError: ' + restResponse.error;
                 if (tagsResponse.error) throw 'tagsError: ' + tagsResponse.error;
-
-                Promise.all(restResponse.restaurants.map((rest) => RestaurantModel.tags(rest.id)))
-                    .then((respArr) => {
-                        respArr.map((resp) => {
-                            if (resp.error) throw resp.error;
-                            if (resp.tags === null) resp.tags = [];
-                        });
-
-                        const tagsIds = respArr.map((respObject) =>
-                            respObject.tags.map((tag) =>
-                                tag.id));
-
-                        for (let i = 0; i < tagsIds.length; i++) {
-                            restResponse.restaurants[i].tagsIds = tagsIds[i];
-                        }
-
-                        const actions = Mocks.actions;
-                        super.execute(new MainView({
-                            actionArr: actions,
-                            recommendArr: recomResponse.restaurants,
-                            categoryArr: tagsResponse.rest_tags,
-                            restaurantArr: restResponse.restaurants,
-                            products: BasketController.basket.product,
-                            page,
-                            count,
-                            total: restResponse.total,
-                        }));
-                    });
+                super.execute(new MainView({
+                    actionArr: Mocks.actions,
+                    recommendArr: recomResponse.restaurants,
+                    categoryArr: tagsResponse.rest_tags,
+                    restaurantArr: restResponse.restaurants,
+                    products: BasketController.basket.product,
+                    page,
+                    count,
+                    total: restResponse.total,
+                }));
             })
             .catch((err) => console.log('error: ', err));
     }

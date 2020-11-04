@@ -36,6 +36,7 @@ export default class SupportChat extends Component {
             return;
 
         if (this.context.Input.domElement.value.trim().length === 0) return;
+        this.context.SendButton.domElement.setAribute('disabled', true);
 
         const data = JSON.stringify({
             message: this.context.Input.domElement.value,
@@ -49,10 +50,17 @@ export default class SupportChat extends Component {
         EventBus.broadcast('send-msg', data);
     }
 
+    enableButton() {
+        this.context.SendButton.domElement.setAribute('disabled', false);
+    }
+
     bind() {
         this.addUnbind(
             EventBus.subscribe(Events.enterPressed, this.submit.bind(this)),
         );
+        this.addUnbind(
+            EventBus.subscribe(Events.messageSent, this.enableButton.bind(this)),
+        )
         super.bind();
     }
 }

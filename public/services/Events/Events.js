@@ -51,6 +51,7 @@ class Events {
         this.basketChanged = 'basket-changed';
         this.restaurantSelected = 'restaurant-selected';
         this.enterPressed = 'enter-pressed';
+        this.messageSent = 'message-sent';
     }
 
     productAdded(id) {

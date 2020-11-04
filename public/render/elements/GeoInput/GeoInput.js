@@ -71,7 +71,7 @@ export default class GeoInput extends Component {
                 }
                 this.active_req = false;
             });
-
+        
         if (address.length === 0) {
             return 'Обязательное поле';
         }

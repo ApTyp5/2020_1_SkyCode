@@ -36,7 +36,7 @@ export default class SupportChat extends Component {
             return;
 
         if (this.context.Input.domElement.value.trim().length === 0) return;
-        this.context.SendButton.domElement.setAribute('disabled', true);
+        this.context.SendButton.domElement.setAttribute('disabled', true);
 
         const data = JSON.stringify({
             message: this.context.Input.domElement.value,

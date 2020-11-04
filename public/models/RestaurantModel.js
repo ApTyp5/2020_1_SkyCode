@@ -48,6 +48,11 @@ class RestaurantModel {
     }
 
     getRestaurantsByAddress(page, count, address, tag = '') {
+        if (tag === '' || tag === null || tag === '-1') {
+            return Http.fetchGet({
+                path: `/api/v1/restaurants_point?page=${page}&count=${count}&address=${address}`,
+            });
+        }
         return Http.fetchGet({
             path: `/api/v1/restaurants_point?page=${page}&count=${count}&address=${address}&tag=${tag}`,
         });

@@ -47,15 +47,15 @@ class RestaurantModel {
         });
     }
 
-    getRestaurantsByAddress(page, count, address) {
+    getRestaurantsByAddress(page, count, address, tag = '') {
         return Http.fetchGet({
-            path: `/api/v1/restaurants_point?page=${page}&count=${count}&address=${address}`,
+            path: `/api/v1/restaurants_point?page=${page}&count=${count}&address=${address}&tag=${tag}`,
         });
     }
 
-    getRecommendationsByAddress(page, count, address, tag = '') {
+    getRecommendationsByAddress(page, count, address) {
         return Http.fetchGet({
-            path: `/api/v1/restaurants_point_recommendations?page=${page}&count=${count}&address=${address}&tag=${tag}`,
+            path: `/api/v1/restaurants_point_recommendations?page=${page}&count=${count}&address=${address}`,
         });
     }
 

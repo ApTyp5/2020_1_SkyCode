@@ -6,6 +6,7 @@ import Event from '../services/Events/Events';
 import Message from '../render/blocks/message/message';
 import ChatModel from '../models/ChatModel';
 import UserController from './UserController';
+import Events from '../services/Events/Events';
 
 class SupportChatController extends BaseController {
     constructor(title = 'support chat') {
@@ -44,6 +45,7 @@ class SupportChatController extends BaseController {
                 }
             }
             domEl.scrollTop = 99999;
+            EventBus.broadcast(Events.messageSent);
         };
 
         super.execute(new SupportChatView({username: UserController.User.firstName}));

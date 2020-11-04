@@ -60,7 +60,7 @@ export default class SupportChat extends Component {
         );
         this.addUnbind(
             EventBus.subscribe(Events.messageSent, this.enableButton.bind(this)),
-        )
+        );
         super.bind();
     }
 }

@@ -9,7 +9,7 @@ export default class RestaurantList extends Component {
         super(classes);
         super.template = template;
         this.addContextData({
-            restaurantComponents: RestaurantList.formRestComponents(restaurantArr, catId),
+            restaurantComponents: RestaurantList.formRestComponents(restaurantArr),
         });
         this.restArr = restaurantArr;
         this.id = 'restaurant-list';
@@ -35,8 +35,8 @@ export default class RestaurantList extends Component {
         return restArr.filter((rest) => rest.tagsIds.includes(catId));
     }
 
-    static formRestComponents(restArr, catId = '-1') {
-        const filteredRestArr = RestaurantList.filterRestCategories(restArr, catId);
+    static formRestComponents(restArr) {
+        const filteredRestArr = restArr;
 
         const restaurantComponents = [];
         for (const restaurant of filteredRestArr) {

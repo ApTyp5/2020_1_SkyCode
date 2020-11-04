@@ -51,7 +51,7 @@ export default class SupportChat extends Component {
     }
 
     enableButton() {
-        this.context.SendButton.domElement.setAribute('disabled', false);
+        this.context.SendButton.domElement.setAttribute('disabled', false);
     }
 
     bind() {

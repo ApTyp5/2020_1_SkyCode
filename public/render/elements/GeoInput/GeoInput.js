@@ -103,7 +103,6 @@ export default class GeoInput extends Component {
             this.last = len;
         }, true);
 
-
         super.bind();
     }
 

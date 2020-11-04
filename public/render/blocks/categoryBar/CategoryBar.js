@@ -48,6 +48,7 @@ export default class CategoryBar extends Component {
         }
 
         this.addContextData({categories}, true);
+        this.activateCategory(sessionStorage.getItem(Events.restCategorySelected));
     }
 
     scroll(multiplier) {
@@ -67,7 +68,6 @@ export default class CategoryBar extends Component {
     }
 
     bind() {
-        this.activateCategory(sessionStorage.getItem(Events.restCategorySelected));
 
         this.unbind(
             EventBus.subscribe(Events.restCategorySelected, this.activateCategory.bind(this)),

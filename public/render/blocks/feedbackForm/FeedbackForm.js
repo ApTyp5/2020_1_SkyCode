@@ -52,6 +52,8 @@ export default class FeedbackForm extends Component {
                         text: this.context.TextInput.domElement.value,
                     };
 
+                    this.context.SubmitButton.domElement
+                        .setAttribute('disabled', 'disabled');
                     if (oldReview === null) {
                         RestaurantModel
                             .addRestaurantReview(restaurantId, JSON.stringify(body))
@@ -65,7 +67,11 @@ export default class FeedbackForm extends Component {
                             .catch((err) => {
                                 Router.reload('Ошибка добавления'
                                     + ' отзыва: ' + err);
-                            });
+                            })
+                            .finally(() => {
+                                this.context.submitButton.domElement
+                                    .removeAttribute('disabled')
+                            })
                     } else {
                         RestaurantModel
                             .changeRestaurantReview(oldReview.id, JSON.stringify(body))
@@ -77,7 +83,11 @@ export default class FeedbackForm extends Component {
                             })
                             .catch((err) => {
                                 Router.reload('Ошибка изменения отзыва: ' + err);
-                            });
+                            })
+                            .finally(() => {
+                                this.context.submitButton.domElement
+                                    .removeAttribute('disabled')
+                            })
                     }
                 },
             }),
